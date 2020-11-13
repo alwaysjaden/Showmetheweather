@@ -1,0 +1,54 @@
+.topBar { 
+    text-align: center;
+    padding : 15px;
+    background-color: darkslategrey;
+    
+}
+.display_1 {
+    color: white;
+}
+
+.row {
+    background-color: white ;
+    
+}
+.city {
+    width: 300px;
+}
+.col-lg-4 {
+    background-color: #F0F0F0;
+    height: 500px;
+    
+}
+#movie-form {
+    padding : 5px;
+}
+#city-input {
+    height: 35px;
+    padding: 5px;
+}
+.searchBtn {
+    height: 35px;
+    margin-left: -5px;
+    margin-top: -4px;
+}
+.buttons-view {
+    background-color: lightgray;
+}
+.city {
+    border: solid gray 0.1px;
+    background-color: white;
+    margin-left: -35px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.col-lg-8 {
+    background-color: white;
+}
+.currentCity {
+    
+}
+.currentWeather {
+    margin-top: 20px;
+    height: 250px;
+
+}

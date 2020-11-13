@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="./asset/css/style.css"/>
+    <title>Document</title>
+</head>
+<body>
+    <div class ="topBar"> 
+            <h1 class="display_1"> Weather Dashboard</h1>
+    </div>
+    <div class="row">
+        <div class="cityButtons col-lg-4">
+            <form id="movie-form">
+                <h5>Search for a City : </h5>
+                <input type="text" id="city-input">          
+                <button id="add-city" class ="btn btn-info searchBtn">Search</button>
+              </form>
+            <ul id="buttons-view"></ul>
+
+        </div>
+        <div class="weatherBox col-lg-8">
+            <div class="currentWeather list-group-item" id="currentWeather">
+            </div>
+            <br>
+            <div class="forcastSec">
+                <h4>5-Day Forcast:</h4>
+            </div>
+        </div>
+      </div>
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="./asset/script/script.js"></script>
+
+</body>
+</html>
