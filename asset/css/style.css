@@ -12,13 +12,9 @@
     background-color: white ;
     
 }
-.city {
-    width: 300px;
-}
-.col-lg-4 {
+.col-lg-3 {
     background-color: #F0F0F0;
-    height: 500px;
-    
+    height: 500px;    
 }
 #movie-form {
     padding : 5px;
@@ -35,7 +31,12 @@
 .buttons-view {
     background-color: lightgray;
 }
+.weatherBox {
+    padding: 15px;
+}
+
 .city {
+    width: 300px;
     border: solid gray 0.1px;
     background-color: white;
     margin-left: -35px;
@@ -44,11 +45,46 @@
 .col-lg-8 {
     background-color: white;
 }
-.currentCity {
-    
-}
+
 .currentWeather {
     margin-top: 20px;
-    height: 250px;
+    height: 330px;
+}
 
+.green{
+    background-color: green;
+    color: white;
+    width: 120px;
+
+}
+.yellow{
+    background-color: yellow;
+    width: 120px;
+
+}
+.orange{
+    background-color: orange;
+    color:white;
+    width: 120px;
+
+}
+.red{
+    background-color: red;
+    color: white;
+    width: 120px;
+
+}
+.violet{
+    background-attachment: violet;
+    color: white;
+    width: 120px;
+
+
+}
+
+.forcasts {
+    background-color: lightskyblue;
+    color: white;
+    margin: 10px;
+    text-align: center;
 }
