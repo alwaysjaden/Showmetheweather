@@ -39,6 +39,7 @@
           
           var fmt1 = 'MM/DD/YYYY ';
           let date = moment().format(fmt1);;
+          
           var cityDiv = $("<h2 class='currentCity'>").text(city + " ( " + date + ")");
           var CurIconNum = (response2.current.weather[0]["icon"]);
           console.log(CurIconNum);
@@ -49,12 +50,30 @@
 
             // Get/Display Current Weather Detail
           var tempF = (response2.current.temp - 273.15) * 1.80 + 32;
-          var pTemp = $("<p>").text("Temperature : " + tempF.toFixed(2) + " °F");
-          var pHum = $("<p>").text("Humidity : " + response2.current.humidity + " %");
-          var pWind = $("<p>").text("Wind Speed : " + response2.current.wind_speed + " MPH");
-          var pUV = $('<p class="uvindex">').text("UV Index : " + response2.current.uvi );
+          var pTemp = $("<div>").text("Temperature : " + tempF.toFixed(2) + " °F");
+          var pHum = $("<div>").text("Humidity : " + response2.current.humidity + " %");
+          var pWind = $("<div>").text("Wind Speed : " + response2.current.wind_speed + " MPH");
+          var uvtext = $('<div class="uvText column">').text("UV Index : " );
 
-          $("#currentWeather").append(cityDiv, currentWeather, pTemp, pHum, pWind, pUV);
+          $("#currentWeather").append(cityDiv, currentWeather, pTemp, pHum, pWind,uvtext);
+          $(".currentCity").append(currentWeather);
+
+          var uvnum = $('<a class="uvindex column">').text(response2.current.uvi );
+          $(".uvText").append(uvnum);
+
+         
+
+          // var pUV = $('<p class="uvindex">').text("UV Index : " + response2.current.uvi );
+          
+
+          // var uvtext = $('<div class="uvText column">').text("UV Index : " );
+          // var uvnum = $('<div class="uvindex column">').text(response2.current.uvi );
+
+          // $(".uvRow").append(uvtext,uvnum );
+
+
+
+
 
           if ( response2.current.uvi <= 2.9 && response2.current.uvi >= 0)
           { $(".uvindex").attr("class","uvindex green");
@@ -102,18 +121,18 @@
 
 
 
-// Function for displaying movie data
+// Function for displaying city data
 function renderButtons() {
 
   $("#buttons-view").empty();
 
-  // Looping through the array of movies
+  // Looping through the array of city
   for (var i = 0; i < cities.length; i++) {
 
-    // Then dynamicaly generating buttons for each movie in the array
+    // Then dynamicaly generating buttons for each city in the array
     // This code $("<button>") is all jQuery needs to create the start and end tag. (<button></button>)
     var cityBtn = $("<button>");
-    // Adding a class of movie to our button
+    // Adding a class of city to our button
     cityBtn.addClass("city list-group-item");
     // Adding a data-attribute
     cityBtn.attr("data-name", cities[i]);
@@ -131,10 +150,10 @@ $("#add-city").on("click", function(event) {
   // This line grabs the input from the textbox
   var city = $("#city-input").val().trim();
 
-  // Adding the movie from the textbox to our array
+  // Adding the city from the textbox to our array
   cities.push(city);
 
-  // Calling renderButtons which handles the processing of our movie array
+  // Calling renderButtons which handles the processing of our city array
   renderButtons();
 
 });

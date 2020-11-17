@@ -36,7 +36,8 @@
 }
 
 .city {
-    width: 300px;
+    width: 100%;
+    max-width: 400px;
     border: solid gray 0.1px;
     background-color: white;
     margin-left: -35px;
@@ -55,36 +56,50 @@
     background-color: green;
     color: white;
     width: 120px;
+    padding: 3px;
 
 }
 .yellow{
     background-color: yellow;
     width: 120px;
+    padding: 3px;
 
 }
 .orange{
     background-color: orange;
     color:white;
     width: 120px;
+    padding: 3px;
 
 }
 .red{
     background-color: red;
     color: white;
     width: 120px;
+    padding: 3px;
 
 }
 .violet{
     background-attachment: violet;
     color: white;
     width: 120px;
+    padding: 3px;
 
 
 }
 
 .forcasts {
+    min-width: 150px;
     background-color: lightskyblue;
     color: white;
     margin: 10px;
     text-align: center;
 }
+
+.uvRow {
+    display :inline;
+    border: solid black ;
+}
+
+
+
