@@ -1,40 +1,6 @@
-.topBar { 
-    text-align: center;
-    padding : 15px;
-    background-color: darkslategrey;
-    
-}
-.display_1 {
-    color: white;
-}
-
-.row {
-    background-color: white ;
-    
-}
-.col-lg-3 {
-    background-color: #F0F0F0;
-    height: 500px;    
-}
-#movie-form {
-    padding : 5px;
-}
-#city-input {
-    height: 35px;
-    padding: 5px;
-}
-.searchBtn {
-    height: 35px;
-    margin-left: -5px;
-    margin-top: -4px;
-}
 .buttons-view {
     background-color: lightgray;
 }
-.weatherBox {
-    padding: 15px;
-}
-
 .city {
     width: 100%;
     max-width: 400px;
@@ -43,15 +9,60 @@
     margin-left: -35px;
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
+.city-form {
+    margin-left: 10px;;
+}
+#city-input {
+    height: 35px;
+    width: 300px;
+    padding: 5px;
+}
+
+.col-lg-3 {
+    background-color: #F0F0F0;
+    height: 500px;    
+    padding: 35px;
+}
 .col-lg-8 {
     background-color: white;
 }
-
 .currentWeather {
     margin-top: 20px;
     height: 330px;
 }
+.display_1 {
+    color: white;
+}
 
+.forcasts {
+    min-width: 150px;
+    background-color: lightskyblue;
+    color: white;
+    margin: 10px;
+    text-align: center;
+}
+
+.row {
+    background-color: white ;  
+}
+
+.searchBtn {
+    height: 35px;
+    margin-left: -5px;
+    margin-top: -4px;
+}
+
+.topBar { 
+    text-align: center;
+    padding : 15px;
+    background-color: darkslategrey;  
+}
+
+.weatherBox {
+    padding: 15px;
+}
+
+/* UV Index Color */
 .green{
     background-color: green;
     color: white;
@@ -88,18 +99,7 @@
 
 }
 
-.forcasts {
-    min-width: 150px;
-    background-color: lightskyblue;
-    color: white;
-    margin: 10px;
-    text-align: center;
-}
 
-.uvRow {
-    display :inline;
-    border: solid black ;
-}
 
 
 
