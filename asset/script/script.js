@@ -1,6 +1,7 @@
 
 // Initial array of Cities
- var cities = ["Austin", "Chicago", "New York", "Orlando", "San Francisco"];
+//  var cities = ["Austin", "Chicago", "New York", "Orlando", "San Francisco"];
+ var cities = [];
  
 
     
@@ -35,22 +36,18 @@
 
           console.log(response2);
             // Display City + Date + Weather on Screen
-          
-          
+
           var fmt1 = 'MM/DD/YYYY ';
           let date = moment().format(fmt1);;
           
           var cityDiv = $("<h2 class='currentCity'>").text(city + " ( " + date + ")");
           var CurIconNum = (response2.current.weather[0]["icon"]);
-          console.log(CurIconNum);
           var currentWeather = $("<img>");
           currentWeather.attr("src","http://openweathermap.org/img/wn/"+ CurIconNum +"@2x.png");
 
-
-
             // Get/Display Current Weather Detail
           var tempF = (response2.current.temp - 273.15) * 1.80 + 32;
-          var pTemp = $("<div>").text("Temperature : " + tempF.toFixed(2) + " °F");
+          var pTemp = $("<div>").text("Temperature : " + tempF.toFixed(1) + " °F");
           var pHum = $("<div>").text("Humidity : " + response2.current.humidity + " %");
           var pWind = $("<div>").text("Wind Speed : " + response2.current.wind_speed + " MPH");
           var uvtext = $('<div class="uvText column">').text("UV Index : " );
@@ -60,20 +57,6 @@
 
           var uvnum = $('<a class="uvindex column">').text(response2.current.uvi );
           $(".uvText").append(uvnum);
-
-         
-
-          // var pUV = $('<p class="uvindex">').text("UV Index : " + response2.current.uvi );
-          
-
-          // var uvtext = $('<div class="uvText column">').text("UV Index : " );
-          // var uvnum = $('<div class="uvindex column">').text(response2.current.uvi );
-
-          // $(".uvRow").append(uvtext,uvnum );
-
-
-
-
 
           if ( response2.current.uvi <= 2.9 && response2.current.uvi >= 0)
           { $(".uvindex").attr("class","uvindex green");
@@ -103,11 +86,11 @@
          
           var pDate = $("<h4>").text(futureDate);
           var futIconNum = (response2.daily[i].weather[0]["icon"]);
-          console.log(futIconNum)
           var pWeather = $("<img>");
           pWeather.attr("src","http://openweathermap.org/img/wn/"+ futIconNum +"@2x.png");
+          var tempFut = (response2.daily[i].temp["day"] - 273.15) * 1.80 + 32;
+          var pTemp = $("<p>").text("Temp High : " + tempFut.toFixed(1) + " °F");
 
-          var pTemp = $("<p>").text("Temp : " + tempF.toFixed(2) + " °F");
           var pHum = $("<p>").text("Humidity : " + response2.daily[i].humidity + " %");
           var forcastCol = document.querySelectorAll(".forcasts");
           
@@ -126,8 +109,16 @@ function renderButtons() {
 
   $("#buttons-view").empty();
 
+  var allCity = localStorage.getItem("cities"); 
+  // allCity = JSON.parse(allCity);
+
+  allCity = JSON.parse(allCity);          
+  
+  // cities.push(allCity);
+
+  console.log(allCity)
   // Looping through the array of city
-  for (var i = 0; i < cities.length; i++) {
+  for (var i = 0; i < allCity.length; i++) {
 
     // Then dynamicaly generating buttons for each city in the array
     // This code $("<button>") is all jQuery needs to create the start and end tag. (<button></button>)
@@ -135,13 +126,24 @@ function renderButtons() {
     // Adding a class of city to our button
     cityBtn.addClass("city list-group-item");
     // Adding a data-attribute
-    cityBtn.attr("data-name", cities[i]);
+    cityBtn.attr("data-name", allCity[i]);
+    // Adding a data-attribute
+    cityBtn.attr("id", "city"+[i]);
     // Providing the initial button text
-    cityBtn.text(cities[i]);
+    cityBtn.text(allCity[i]);
+    
     // Adding the button to the HTML
-    $("#buttons-view").append(cityBtn);
+    $("#buttons-view").prepend(cityBtn);
   }
+  var cityList = allCity
+  
+  localStorage.setItem("cities", JSON.stringify(cityList));
 }
+
+$(document).ready(function(){
+  
+  $('#city0').trigger('click');
+});
 
 // This function handles events where one button is clicked
 $("#add-city").on("click", function(event) {
@@ -153,6 +155,10 @@ $("#add-city").on("click", function(event) {
   // Adding the city from the textbox to our array
   cities.push(city);
 
+  var cityList = cities
+  
+  localStorage.setItem("cities", JSON.stringify(cityList));
+  
   // Calling renderButtons which handles the processing of our city array
   renderButtons();
 
@@ -160,5 +166,21 @@ $("#add-city").on("click", function(event) {
 
 $(document).on("click", ".city", displayWeatherInfo);
 
-renderButtons();
+renderButtons()   
+
+ 
+
+
+
+// localStorage.setItem("user", JSON.stringify(finalScore));
+// var allScores = localStorage.getItem("allScores");
+// if (allCity ===null){
+//   allCity = [];
+// } else {
+//   allCity = JSON.parse(allScores);          
+// }
+// allCity.push(cities);
+//     var newcity = JSON.stringify(allCity);
+//     localStorage.setItem("cities", newcity);
+
 
