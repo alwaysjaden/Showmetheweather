@@ -1,6 +1,6 @@
 # Show Me the Weather
 
-![how Me the Weather](./asset/images/snapshot.gif?raw=true "how Me the Weather")
+![how Me the Weather](./asset/image/snapshot.gif?raw=true "how Me the Weather")
 
 # About This Project
 
