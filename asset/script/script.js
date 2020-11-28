@@ -14,7 +14,7 @@ function displayWeatherInfo() {
 
    var city = $(this).attr("data-name");
    var queryURLLocation = "https://api.openweathermap.org/data/2.5/weather?q="+ city +"&appid=166a433c57516f51dfab1f7edaed8413";
-   // Creating an AJAX call for the specific movie button being clicked
+   // Creating an AJAX call for the specific city button being clicked
    $.ajax({
      url: queryURLLocation,
      method: "GET"
@@ -39,8 +39,12 @@ function displayWeatherInfo() {
 
          var fmt1 = 'MM/DD/YYYY ';
          let date = moment().format(fmt1);;
+
+         // diplay current weather for searched city //
          
          var cityDiv = $("<h2 class='currentCity'>").text(city + " ( " + date + ")");
+
+         //render weahter icon for current weather//
          var CurIconNum = (response2.current.weather[0]["icon"]);
          var currentWeather = $("<img>");
          currentWeather.attr("src","http://openweathermap.org/img/wn/"+ CurIconNum +"@2x.png");
@@ -57,6 +61,8 @@ function displayWeatherInfo() {
 
          var uvnum = $('<a class="uvindex column">').text(response2.current.uvi );
          $(".uvText").append(uvnum);
+
+         // render color uv index number basd on it's value //
 
          if ( response2.current.uvi <= 2.9 && response2.current.uvi >= 0)
          { $(".uvindex").attr("class","uvindex green");
@@ -83,10 +89,12 @@ function displayWeatherInfo() {
          let future = moment().add(+[i]+1,'days');
          var futureDate = moment(future).format(fmt1);
 
-        
+        // display weather info of future dates//
          var pDate = $("<h4>").text(futureDate);
          var futIconNum = (response2.daily[i].weather[0]["icon"]);
          var pWeather = $("<img>");
+
+         //display weather icon for future dates//
          pWeather.attr("src","http://openweathermap.org/img/wn/"+ futIconNum +"@2x.png");
          var tempFut = (response2.daily[i].temp["day"] - 273.15) * 1.80 + 32;
          var pTemp = $("<p>").text("Temp: " + tempFut.toFixed(1) + " °F");
@@ -102,9 +110,7 @@ function displayWeatherInfo() {
 });
 }
 
-
-// var allCity = JSON.parse(window.localStorage.getItem("cities")) || []
-// Function for displaying city data
+// render searched button on side bar//
 function renderButtons() {
 
  $("#buttons-view").empty();
@@ -132,6 +138,7 @@ function renderButtons() {
    
   }
 
+    // render last city // render on search button //
   $(document).ready(function(){
  
     $('#city0').trigger('click');
@@ -140,10 +147,7 @@ function renderButtons() {
 }
 
 
-// $(document).ready(function(){
- 
-//  $('#city0').trigger('click');
-// });
+
 
 var allCity = JSON.parse(window.localStorage.getItem("cities")) || []
 
@@ -172,23 +176,5 @@ $("#add-city").on("click", function(event) {
 $(document).on("click", ".city", displayWeatherInfo);
 
 
-
-
 renderButtons()   
-
-
-
-
-
-// localStorage.setItem("user", JSON.stringify(finalScore));
-// var allScores = localStorage.getItem("allScores");
-// if (allCity ===null){
-//   allCity = [];
-// } else {
-//   allCity = JSON.parse(allScores);          
-// }
-// allCity.push(cities);
-//     var newcity = JSON.stringify(allCity);
-//     localStorage.setItem("cities", newcity);
-
 
